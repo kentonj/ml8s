@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ml8s-deployment
+  labels:
+    app: ml8s
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ml8s
+  template:
+    metadata:
+      labels:
+        app: ml8s
+    
+    spec:
+      containers:
+      - name: ml8s
+        image: kentonj/ml8s:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000

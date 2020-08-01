@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify
 
-default = Blueprint('default', __name__, url_prefix='')
+default = Blueprint('default', __name__, url_prefix='/')
 
 @default.route('', methods=['GET'])
-def default():
+def welcome():
     return jsonify({'msg': 'all is well'})

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ml8s-service
+spec:
+  selector:
+    app: ml8s
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 5000
