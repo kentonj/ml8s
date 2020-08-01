@@ -1,10 +1,10 @@
 version: '3.7'
 services:
-  model-service:
+  ml8s:
     build: ./
     ports:
       - "8080:5000"
     volumes:
-      - ./src:/model-service/src
+      - ./src:/ml8s/src
     environment:
       - STAGE=development
