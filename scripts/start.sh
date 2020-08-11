@@ -7,14 +7,8 @@ serve () {
     # start the webserver to serve model results
     GUNICORN_WORKERS=${GUNICORN_WORKERS:-4}
     PORT=5000
-    if [ "$STAGE" = "production" ]; then
-        # production stage, we will want to use gunicorn to run our app rather than flask's development server
-        gunicorn -w $GUNICORN_WORKERS app -b :$PORT
-    else
-        # we are not in the production stage, use flask to run the app as a development server
-        export FLASK_ENV=development
-        flask run --host 0.0.0.0 --port $PORT
-    fi
+    # use gunicorn which is a robust WSGI that serves a Flask app.
+    gunicorn -w $GUNICORN_WORKERS app -b :$PORT
 }
 
 train () {
